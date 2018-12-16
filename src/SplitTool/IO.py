@@ -33,7 +33,7 @@ def s_p(str_path):
 
 
 def strip_eol(str_input):
-    return str_input.replace('\r', '').replace('\n', '')
+    return str_input.decode("utf-8") .replace('\r', '').replace('\n', '')
 
 
 def mkdir(str_path):

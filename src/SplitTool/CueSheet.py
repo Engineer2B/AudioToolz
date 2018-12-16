@@ -1,6 +1,7 @@
 __author__ = 'Boris Breuer'
 import numpy as np
 import math
+import os
 from Variables import assert_int_or_float, assert_str
 
 
@@ -56,7 +57,7 @@ class CueSheet:
         return 'INDEX 01 ' + seconds_to_hhmmss(self.newTrackLengths[track_number])
 
     def to_file(self, path_name, file_name):
-        the_file = open(path_name + file_name + ".cue", "w")
+        the_file = open(os.path.join(path_name, file_name + ".cue"), "w")
         the_file.write('{0}\n{1}\n{2}\n{3}\n{4}\n'.format(
             self.str_genre(),
             self.str_year(),
