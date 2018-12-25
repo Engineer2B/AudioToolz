@@ -5,6 +5,22 @@
 	"version": "0.2.0",
 	"configurations": [
 		{
+			"name": "Gain Tool",
+			"type": "python",
+			"request": "launch",
+			"program": "${workspaceRoot}\\GainTool.py",
+			"console": "integratedTerminal",
+			"args": ["data\\Gain-Tool"]
+		},
+		{
+			"name": "Split Tool",
+			"type": "python",
+			"request": "launch",
+			"program": "${workspaceRoot}\\SplitTool.py",
+			"console": "integratedTerminal",
+			"args": ["data\\Split-Tool"]
+		},
+		{
 			"name": "Python: Current File (Integrated Terminal)",
 			"type": "python",
 			"request": "launch",

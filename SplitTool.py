@@ -1,14 +1,15 @@
-__author__ = 'Boris Breuer'
-from id3tag import TrackInfo
-import IO
+from src.Track.id3tag import TrackInfo
+import src.Helper.IO as IO
 import os
 import time
 import subprocess
+__author__ = 'Boris Breuer'
 fileName = 'Google - congressional'
-inputDirectoryPath = os.path.join('d:\\','work', 'GitHub', 'AudioToolz', 'data')
+inputDirectoryPath = os.path.join(
+    'd:\\', 'work', 'GitHub', 'AudioToolz', 'data')
 inputFilePath = os.path.join(inputDirectoryPath, fileName + '.mp3')
 print('Reading from file: ', inputFilePath)
-mp3DirectPath = os.path.join('c:\\','Program Files (x86)', 'mp3DirectCut')
+mp3DirectPath = os.path.join('c:\\', 'Program Files (x86)', 'mp3DirectCut')
 outputPath = inputDirectoryPath + ' - cut'
 IO.mkdir(outputPath)
 IO.set_path(IO.get_script_path())

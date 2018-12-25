@@ -2,7 +2,7 @@ __author__ = 'Boris Breuer'
 import numpy as np
 import math
 import os
-from Variables import assert_int_or_float, assert_str
+from src.Helper.Variables import assert_int_or_float, assert_str
 
 
 def str_track(track_number):

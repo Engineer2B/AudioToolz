@@ -1,9 +1,9 @@
 __author__ = 'Boris Breuer'
 from mutagen.easyid3 import EasyID3
 from mutagen.mp3 import MP3
-import IO
-from CueSheet import CueSheet
-from Variables import assert_int_or_float, assert_str
+import src.Helper.IO as IO
+from src.Track.CueSheet import CueSheet
+from src.Helper.Variables import assert_int_or_float, assert_str
 import re
 
 
