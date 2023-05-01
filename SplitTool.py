@@ -1,29 +1,33 @@
 from src.Track.id3tag import TrackInfo
+import json
 import src.Helper.IO as IO
 import os
 import time
-import subprocess
 __author__ = 'Boris Breuer'
-fileName = 'Google - congressional'
-inputDirectoryPath = os.path.join(
-    'd:\\', 'work', 'GitHub', 'AudioToolz', 'data')
-inputFilePath = os.path.join(inputDirectoryPath, fileName + '.mp3')
+# read file
+with open(os.path.join('private','splitToolConfig.json'), 'r') as myfile:
+    configText=myfile.read()
+# parse file
+config = json.loads(configText)
+# show values
+inputDirectoryPath = os.path.join(*config['AudioFile']['DirectoryPath'])
+inputFilePath = os.path.join(inputDirectoryPath, config['AudioFile']['FileName'] + '.mp3')
 print('Reading from file: ', inputFilePath)
-mp3DirectPath = os.path.join('c:\\', 'Program Files (x86)', 'mp3DirectCut')
+
 outputPath = inputDirectoryPath + ' - cut'
 IO.mkdir(outputPath)
 IO.set_path(IO.get_script_path())
 myTrack = TrackInfo(filename=inputFilePath,
                     newtracklength=30 * 60,
-                    genre='Hearing',
-                    albumname='CNET',
-                    albumyear='2018')
+                    genre=config['AudioFile']['Genre'],
+                    albumname=config['AudioFile']['AlbumName'],
+                    albumyear=config['AudioFile']['AlbumYear'])
 myCueSheet = myTrack.cue_sheet()
-myCueSheet.to_file(inputDirectoryPath, fileName)
+myCueSheet.to_file(inputDirectoryPath, config['AudioFile']['FileName'])
 
 theCommand = '{0} "{1}" {2} "{3}"'.format(
-    IO.s_p(os.path.join(mp3DirectPath, 'mp3DirectCut.exe')),
-    IO.s_p(os.path.join(inputDirectoryPath, fileName + '.cue')),
+    IO.s_p(os.path.join(*config['mp3DirectCutPath'], 'mp3DirectCut.exe')),
+    IO.s_p(os.path.join(inputDirectoryPath, config['AudioFile']['FileName'] + '.cue')),
     '/split',
     IO.s_p(outputPath))
 print(theCommand)

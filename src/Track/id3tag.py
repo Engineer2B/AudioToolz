@@ -66,12 +66,10 @@ class TrackInfo:
         str_total_tracks = str(len(ls_str_files))
         for strFileName in ls_str_files:
             easy_id3_object = EasyID3(str_path_name + "\\" + strFileName)
-            regex_title = re.match(".*?" + self.trackName + " Track (\d{2})$",
-                                   IO.get_file_name(strFileName))
+            regex_title = re.match(".*?" + self.trackName + " Track (\d{2})$", IO.get_file_name(strFileName))
             track_number = regex_title.group(1)
             easy_id3_object["tracknumber"] = track_number + "/" + str_total_tracks
-            easy_id3_object["title"] = self.trackName + " " + \
-                                       track_number + " of " + str_total_tracks
+            easy_id3_object["title"] = self.trackName + " " + track_number + " of " + str_total_tracks
             easy_id3_object["genre"] = self.albumGenre
             easy_id3_object["date"] = self.albumYear
             easy_id3_object["encodedby"] = "AudioToolz with MP3DirectCut"

@@ -48,10 +48,10 @@ with open(os.path.join(sys.path[0], "FFmpegFormats.json")) as \
                 print('\t- file %s (full path: %s)' % (filename, filePath))
                 with open(filePath, 'rb') as fileHandle:
                     audioSegment = pydub.AudioSegment.from_file(fileHandle)
-                    # Increase volume by 30 dB
-                    audioSegment_30db_louder = audioSegment + 30
+                    # Increase volume by 50 dB
+                    audioSegment_50db_louder = audioSegment + 50
                     # save the output
                     outFilePath = os.path.join(
                         outputFolderPath, fileAndExt[0] + ".mp3")
-                    fileHandle = audioSegment_30db_louder.export(
+                    fileHandle = audioSegment_50db_louder.export(
                         outFilePath, "mp3")
